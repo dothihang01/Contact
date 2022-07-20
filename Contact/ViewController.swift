@@ -44,6 +44,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return cell
     }
+    
+    //hang abc 1234
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let inforcontacts = sb.instantiateViewController(withIdentifier: "inforContacts") as! InforContactsViewController
