@@ -11,7 +11,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var myTable:
     UITableView!
-    var arrayContacts: [(name: String, phone: String)] = [("Anh","0192374839"),("Thuy","0283746512"),("Huong","0743284736"),("Hoa","0193728463"),("Nam","0183649384"),("Phong","0912847364")]
+    var arrayContacts: [(name: String, phone: String)] = [("Anh","0192374839"),("Thuy","0283746512"),("Huong","0743284736"),("Hoa","0193728463"),("Nam","0183649384"),("Phuong","0345738475")]
     
     var contactsDict = [String: [String]]()
     var contactSection = [String]()
