@@ -7,28 +7,32 @@
 
 import UIKit
 
-class InforContactsViewController: UIViewController, UITableViewDataSource {
+class InforContactsViewController: UIViewController {
 
     var nameContact: String = ""
     var phoneContact: String = ""
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var myTable2: UITableView!
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         myTable2.dataSource = self
        textLabel.text = nameContact
        
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return phoneContact.count
+}
+
+extension InforContactsViewController: UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return nameContact.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellinfor")
         cell?.textLabel?.text = phoneContact
         return cell!
     }
-    
-
 }
-
