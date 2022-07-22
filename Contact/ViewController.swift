@@ -9,66 +9,58 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var myTable:
-    UITableView!
-    var contactsDict = [String: [String]]()
-    var contactSection = [String]()
-    override func viewDidLoad()
-    {
+    @IBOutlet weak var myTable: UITableView!
+    
+    var name: String!
+    
+    var listContact: [Contact] = []
+//    var contactsDict = [String: [String]]()
+//    var contactSection = [String]()
+    override func viewDidLoad() {
         super.viewDidLoad()
         myTable.dataSource = self
         myTable.delegate = self
-        createContactsDict()
+        createContacts()
+//        myTable.reloadData()
     }
     
-    func createContactsDict()
-    {
-        for contact in array.arrayContacts
-        {
-            let firstCharacterName = contact.name.index(contact.name.startIndex, offsetBy: 1)
-            let contactKey  = String(contact.name[..<firstCharacterName])
-            if var contactsValue = contactsDict[contactKey]
-            {
-                contactsValue.append(contact.name)
-                contactsDict[contactKey] = contactsValue
-            } else
-            {
-                contactsDict[contactKey] = [contact.name]
-            }
-        }
-        contactSection = [String](contactsDict.keys)
-        contactSection = contactSection.sorted(by: { $0 < $1 })
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        name = nil
+//        print(name)
+    }
+    
+    func createContacts() {
+        listContact.append(Contact(name: "Hoang", phone: "0346310004"))
+        listContact.append(Contact(name: "Em", phone: "0346310004"))
+        listContact.append(Contact(name: "Anh", phone: "0346310004"))
+        listContact.append(Contact(name: "Binh", phone: "0346310004"))
+        listContact.append(Contact(name: "Cuong", phone: "0346310004"))
+        listContact.append(Contact(name: "Fhu", phone: "123456789", address: "Ha Noi"))
+        
+    }
+    
+    @IBAction func didSelectAddContact(_ sender: Any) {
+        listContact.insert(Contact(name: "ABC", phone: "123456"), at: 0)
+        myTable.reloadData()
     }
 }
 
 extension ViewController: UITableViewDataSource
 {
     
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return contactSection.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
-    {
-        return contactSection[section]
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        let contactKey = contactSection[section]
-        guard let contactValue = contactsDict[contactKey] else {return 0}
-        return contactValue.count
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listContact.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let contactKey = contactSection[indexPath.section]
-        if let contactValue = contactsDict[contactKey]
-        {
-            cell.textLabel?.text = contactValue[indexPath.row]
-        }
+        cell.textLabel?.text = listContact[indexPath.row].name
         return cell
     }
 }
@@ -76,23 +68,13 @@ extension ViewController: UITableViewDataSource
 extension ViewController: UITableViewDelegate
 {
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-         let sb = UIStoryboard(name: "Main", bundle: nil)
-         let inforcontacts = sb.instantiateViewController(withIdentifier: "inforContacts") as! InforContactsViewController
-         let contactKey = contactSection[indexPath.section]
-         if let contactValue = contactsDict[contactKey]
-        {
-             inforcontacts.nameContact = contactValue[indexPath.row]
-             for index in array.arrayContacts
-             {
-                 if contactValue[indexPath.row] == index.name
-                 {
-                     inforcontacts.phoneContact = index.phone
-                 }
-             }
-         }
-         self.navigationController?.pushViewController(inforcontacts, animated: true)
-     }
-
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let contactDetailVC = sb.instantiateViewController(withIdentifier: "inforContacts") as! InforContactsViewController
+        self.navigationController?.pushViewController(contactDetailVC, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            contactDetailVC.contact = self.listContact[indexPath.row]
+        }
+    }
 }

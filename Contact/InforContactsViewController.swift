@@ -8,31 +8,37 @@
 import UIKit
 
 class InforContactsViewController: UIViewController {
-
-    var nameContact: String = ""
-    var phoneContact: String = ""
+    
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var myTable2: UITableView!
-    override func viewDidLoad()
-    {
+    
+    var contact: Contact? {
+        didSet {
+            if isViewLoaded {
+                textLabel.text = contact?.name
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        myTable2.dataSource = self
-       textLabel.text = nameContact
-       
+//        myTable2.dataSource = self
+//        textLabel.text = nameContact
+        
     }
 }
 
-extension InforContactsViewController: UITableViewDataSource
-{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return nameContact.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellinfor")
-        cell?.textLabel?.text = phoneContact
-        return cell!
-    }
-}
+//extension InforContactsViewController: UITableViewDataSource
+//{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+//    {
+//        return nameContact.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+//    {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cellinfor")
+//        cell?.textLabel?.text = phoneContact
+//        return cell!
+//    }
+//}

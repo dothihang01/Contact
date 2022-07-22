@@ -15,6 +15,7 @@
 		30D939C32880795000FF91D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D939C22880795000FF91D1 /* Assets.xcassets */; };
 		30D939C62880795000FF91D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D939C42880795000FF91D1 /* LaunchScreen.storyboard */; };
 		30D939D4288163B800FF91D1 /* InforContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D939D3288163B800FF91D1 /* InforContactsViewController.swift */; };
+		30F4FEA6288ACD2700DDD6F3 /* AddInforViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4FEA5288ACD2700DDD6F3 /* AddInforViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		30D939C52880795000FF91D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30D939C72880795000FF91D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30D939D3288163B800FF91D1 /* InforContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InforContactsViewController.swift; sourceTree = "<group>"; };
+		30F4FEA5288ACD2700DDD6F3 /* AddInforViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInforViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				30D939C42880795000FF91D1 /* LaunchScreen.storyboard */,
 				30D939C72880795000FF91D1 /* Info.plist */,
 				30D939D3288163B800FF91D1 /* InforContactsViewController.swift */,
+				30F4FEA5288ACD2700DDD6F3 /* AddInforViewController.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30D939D4288163B800FF91D1 /* InforContactsViewController.swift in Sources */,
+				30F4FEA6288ACD2700DDD6F3 /* AddInforViewController.swift in Sources */,
 				30D939BE2880795000FF91D1 /* ViewController.swift in Sources */,
 				30D939BA2880795000FF91D1 /* AppDelegate.swift in Sources */,
 				30A98978288925FC003A146C /* ContactModel.swift in Sources */,
